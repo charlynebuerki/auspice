@@ -38,12 +38,7 @@ function Controls() {
 
   return (
     <ControlsContainer>
-      <ChooseDataset />
-
-      <ControlHeader title={t("sidebar:Date Range")} tooltip={DateRangeInfo}/>
-      <DateRangeInputs />
-      <AnimationControls />
-
+      
       <ControlHeader title={t("sidebar:Color By")} tooltip={ColorByInfo}/>
       <ColorBy />
 
@@ -62,33 +57,6 @@ function Controls() {
             <ChooseMetric />
             <ChooseBranchLabelling />
             <ChooseTipLabel />
-            <ChooseSecondTree />
-            <ChooseExplodeAttr tooltip={ExplodeTreeInfo} />
-            <ToggleTangle />
-          </>}
-        />
-      }
-
-      {panelsAvailable.includes("measurements") &&
-        <PanelSection
-          panel="measurements"
-          title={t("sidebar:Measurements")}
-          tooltip={MeasurementsInfo}
-          options={<MeasurementsOptions />}
-        />
-      }
-
-      {/* Prevent the map from being toggled on when a second tree is visible.
-          It is hidden by logic elsewhere.
-      */}
-      {panelsAvailable.includes("map") && !showTreeToo &&
-        <PanelSection
-          panel="map"
-          title={t("sidebar:Map")}
-          tooltip={MapInfo}
-          options={<>
-            <GeoResolution />
-            <TransmissionLines />
           </>}
         />
       }
@@ -101,31 +69,8 @@ function Controls() {
         />
       }
 
-      {panelsAvailable.includes("frequencies") &&
-        <PanelSection
-          panel="frequencies"
-          title={t("sidebar:Frequency")}
-          tooltip={FrequencyInfo}
-          options={<NormalizeFrequencies />}
-        />
-      }
 
-      <span style={{ marginTop: "10px" }}>
-        <ControlHeader title={t("sidebar:Animation Options")} tooltip={AnimationOptionsInfo}/>
-        <AnimationOptions />
-      </span>
 
-      {canTogglePanelLayout &&
-        <>
-          <span style={{ paddingTop: "10px" }} />
-          <ControlHeader title={t("sidebar:Display")} tooltip={PanelLayoutInfo} />
-          <PanelLayout />
-        </>
-      }
-
-      <span style={{ paddingTop: "10px" }} />
-      <ControlHeader title={t("sidebar:Language")}/>
-      <Language />
     </ControlsContainer>
   );
 }
